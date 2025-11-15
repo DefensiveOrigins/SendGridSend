@@ -1,5 +1,5 @@
 [build-system]
-requires = [ "hatchling",]
+requires = ["hatchling>=1.20"]
 build-backend = "hatchling.build"
 
 [project]
@@ -21,3 +21,17 @@ Issues = "https://github.com/DefensiveOrigins/SendGridSend/issues"
 
 [project.scripts]
 sendgridsend = "SG:main"
+
+# ---- Hatch build configuration ----
+
+[tool.hatch.build.targets.wheel]
+# Explicitly tell Hatch what to ship in the wheel
+only-include = ["SG.py"]
+
+[tool.hatch.build.targets.sdist]
+# Optional but nice: include main artifacts in the sdist
+include = [
+  "SG.py",
+  "README.md",
+  "pyproject.toml",
+]
