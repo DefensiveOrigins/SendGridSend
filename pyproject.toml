@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling>=1.20"]
+requires = [ "hatchling>=1.20",]
 build-backend = "hatchling.build"
 
 [project]
 name = "sendgridsend"
-version = "0.1.1"
+version = "0.1.2"
 description = "Send an email from the command line using Python and a SendGrid API key."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -22,16 +22,8 @@ Issues = "https://github.com/DefensiveOrigins/SendGridSend/issues"
 [project.scripts]
 sendgridsend = "SG:main"
 
-# ---- Hatch build configuration ----
-
 [tool.hatch.build.targets.wheel]
-# Explicitly tell Hatch what to ship in the wheel
-only-include = ["SG.py"]
+only-include = [ "SG.py",]
 
 [tool.hatch.build.targets.sdist]
-# Optional but nice: include main artifacts in the sdist
-include = [
-  "SG.py",
-  "README.md",
-  "pyproject.toml",
-]
+include = [ "SG.py", "README.md", "pyproject.toml",]
