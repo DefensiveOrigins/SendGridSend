@@ -1,18 +1,46 @@
 [build-system]
-requires = [ "hatchling",]
+requires = ["hatchling>=1.20"]
 build-backend = "hatchling.build"
 
 [project]
 name = "sendgridsend"
-version = "0.1.1"
-description = "Send an email from the command line using Python and a SendGrid API key."
+version = "0.1.0"
+description = "Send an email from the command line using a SendGrid API key."
 readme = "README.md"
 requires-python = ">=3.8"
-keywords = [ "sendgrid", "email", "cli", "command-line", "mail",]
-classifiers = [ "Development Status :: 4 - Beta", "Environment :: Console", "Intended Audience :: System Administrators", "Intended Audience :: Information Technology", "License :: OSI Approved :: MIT License", "Programming Language :: Python", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only", "Programming Language :: Python :: 3.8", "Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Topic :: Communications :: Email", "Topic :: Utilities",]
-dependencies = [ "requests>=2.25",]
-[[project.authors]]
-name = "Defensive Origins"
+
+authors = [
+  { name = "Defensive Origins" }
+]
+
+keywords = [
+  "sendgrid",
+  "email",
+  "cli",
+  "command-line",
+  "mail",
+]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: System Administrators",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Communications :: Email",
+  "Topic :: Utilities",
+]
+
+dependencies = [
+  "requests>=2.25",
+]
 
 [project.urls]
 Homepage = "https://github.com/DefensiveOrigins/SendGridSend"
@@ -21,3 +49,17 @@ Issues = "https://github.com/DefensiveOrigins/SendGridSend/issues"
 
 [project.scripts]
 sendgridsend = "SG:main"
+
+# ---- Hatch build configuration ----
+
+[tool.hatch.build.targets.wheel]
+# Explicitly tell Hatch what to ship in the wheel
+only-include = ["SG.py"]
+
+[tool.hatch.build.targets.sdist]
+# Optional but nice: include main artifacts in the sdist
+include = [
+  "SG.py",
+  "README.md",
+  "pyproject.toml",
+]
